@@ -1,7 +1,5 @@
 //import express
 const express = require("express");
-//require mongodb
-const mongodb = require("mongodb");
 //set express to app
 const app = express();
 //use express
@@ -25,12 +23,16 @@ app.use((req, res, next) => {
 //     //connect to the db
 //     database = cl.db("cw2database");
 // });
-let db;
+const mongodb = require("mongodb");
+
+
 const connectionURL = "mongodb+srv://muhammad:mancity2012@cluster0.a4bvy.mongodb.net"
 const dbName = "cw2database"
 
 //get MongoClient
 const MongoClient = mongodb.MongoClient;
+
+let db;
 
 MongoClient.connect(connectionURL,{
     useNewUrlParser: true,
