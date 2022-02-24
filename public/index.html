@@ -159,9 +159,22 @@
                 },
                 submit() {
                     if (this.phonenumber(this.user.number)) {
-                        alert('Your Lesson has been booked.')
-                        // console.log(this.user);
-                    }
+                       //post checkout information to orders collection
+                       fetch('https://webcw2.herokuapp.com/orders', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                mode: "cors",
+                                cache: "no-store",
+                                body: JSON.stringify(app.user),
+                            })
+                            .then(response => response.json())
+                            .then(responseJSON => {})
+                            .catch((error) => {
+                                console.log(error);
+                            });
+                    }           
                 },
                 phonenumber(number) {
                     if ((number.match(phoneno))) {
