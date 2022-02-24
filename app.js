@@ -32,8 +32,6 @@ const dbName = "cw2database"
 //get MongoClient
 const MongoClient = mongodb.MongoClient;
 
-let db;
-
 MongoClient.connect(connectionURL,{
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -42,7 +40,7 @@ MongoClient.connect(connectionURL,{
         throw err;
     }
     //connectedClient will be the connected instance of MongoClient
-    db = connectedClient.db(dbName);
+    let db = connectedClient.db(dbName);
 })
 
 //make the collection a parameter so we can connect to the collection
