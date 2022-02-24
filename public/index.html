@@ -93,7 +93,7 @@
                             <div>
                                 <h3>Student Details</h3>
                                 
-                                <form>
+                                <form v-on:submit.prevent="submit">
                                     <div>
                                         <label for="name">Your Name</label>
                                         <input v-model="user.name" type="text" required>
@@ -102,7 +102,7 @@
                                         <label for="name">Phone Number</label>
                                         <input v-model="user.number" type="tel" required>
                                     </div>
-                                    <input type="submit" value="Checkout">
+                                    <button type="submit">Checkout</button>
                                 </form>
                                 </div>
                             </div>
@@ -217,7 +217,7 @@
                             })
                         default:
                             return this.lessons.sort((a, b) => {
-                                return this.sort == 'ascending' ? a.id - b.id : b.id - a.id;
+                                return this.sort == 'ascending' ? a._id - b._id : b._id - a._id;
                             })
                     }
                 }
