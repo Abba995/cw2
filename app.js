@@ -1,5 +1,7 @@
 //import express
 const express = require("express");
+//require mongodb
+const mongodb = require("mongodb");
 //set express to app
 const app = express();
 //use express
@@ -23,9 +25,7 @@ app.use((req, res, next) => {
 //     //connect to the db
 //     database = cl.db("cw2database");
 // });
-const mongodb = require("mongodb");
-
-
+let db;
 const connectionURL = "mongodb+srv://muhammad:mancity2012@cluster0.a4bvy.mongodb.net"
 const dbName = "cw2database"
 
@@ -40,7 +40,7 @@ MongoClient.connect(connectionURL,{
         throw err;
     }
     //connectedClient will be the connected instance of MongoClient
-    let db = connectedClient.db(dbName);
+    db = connectedClient.db(dbName);
 })
 
 //make the collection a parameter so we can connect to the collection
