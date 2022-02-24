@@ -14,19 +14,40 @@ app.use((req, res, next) => {
     next();
 });
 
-//connect to mongo client
-const MongoClient = require("mongodb").MongoClient;
-//create database
-let database;
-//connect to the cluster
-MongoClient.connect("mongodb+srv://muhammad:mancity2012@cluster0.a4bvy.mongodb.net",(err, cl) => {
-    //connect to the db
-    database = cl.db("cw2database");
-});
+// //connect to mongo client
+// const MongoClient = require("mongodb").MongoClient;
+// //create database
+// let database;
+// //connect to the cluster
+// MongoClient.connect("mongodb+srv://muhammad:mancity2012@cluster0.a4bvy.mongodb.net",(err, cl) => {
+//     //connect to the db
+//     database = cl.db("cw2database");
+// });
+const mongodb = require("mongodb");
+
+
+const connectionURL = "mongodb+srv://muhammad:mancity2012@cluster0.a4bvy.mongodb.net"
+const dbName = "cw2database"
+
+//get MongoClient
+const MongoClient = mongodb.MongoClient;
+
+let db;
+
+MongoClient.connect(connectionURL,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+},(err,connectedClient) => {
+    if(err){
+        throw err;
+    }
+    //connectedClient will be the connected instance of MongoClient
+    db = connectedClient.db(dbName);
+})
 
 //make the collection a parameter so we can connect to the collection
 app.param("collName", (request, response, next, collName) => {
-    request.collection = database.collection(collName);
+    request.collection = db.collection(collName);
     console.log("collection name:", request.collection);
     return next();
 });
