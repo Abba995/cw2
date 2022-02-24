@@ -133,7 +133,7 @@
             },
             created: function() {
                 console.log("getting lessons from the db...");
-                fetch("http://localhost:5000/lessons").then(
+                fetch("https://webcw2.herokuapp.com/lessons").then(
                     function (res) {
                         res.json().then(
                             function (json) {
@@ -142,7 +142,7 @@
                         )
                     }
                 )
-            },
+                },
             methods: {
                 addToCart(lesson) {
                     this.lessons.find(item => item._id == lesson._id).availableInventory -= 1;
