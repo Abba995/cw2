@@ -11,5 +11,14 @@
   "dependencies": {
     "express": "^4.17.3",
     "mongodb": "^4.4.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abba995/cw2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Abba995/cw2/issues"
+  },
+  "homepage": "https://github.com/Abba995/cw2#readme"
 }
