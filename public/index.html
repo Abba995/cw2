@@ -158,7 +158,6 @@
                     this.showProduct = !this.showProduct;
                 },
                 submit() {
-                    if (this.phonenumber(this.user.number)) {
                        //post checkout information to orders collection
                        fetch('https://webcw2.herokuapp.com/orders', {
                                 method: 'POST',
@@ -174,13 +173,8 @@
                             .catch((error) => {
                                 console.log(error);
                             });
-                    }           
+                           
                 },
-                phonenumber(number) {
-                    if ((number.match(phoneno))) {
-                        return true;
-                    }  
-                }
             },
             computed: {
                 total() {
